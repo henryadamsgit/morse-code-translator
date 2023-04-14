@@ -1,7 +1,7 @@
 import { morseData1, morseData2 } from "./data.js";
 
-//const outputDiv = document.querySelector("#output");
-//const translateButton = document.querySelector("#translate");
+const output = document.querySelector("#output");
+const translateButton = document.querySelector("#translate");
 
 export const englishToMorse = (string) => {
   const stringToMorse = string
@@ -31,4 +31,13 @@ export const morseToEnglish = (string) => {
   return englishCharacters.join("");
 };
 
-//translateButton.addEventListener("click", englishToMorse, morseToEnglish);
+export const morseOrEnglish = (input) => {
+  const isMorse = input.split("").some((char) => char === "." || char === "-");
+  if (isMorse) {
+    return morseToEnglish(input);
+  } else {
+    return englishToMorse(input);
+  }
+};
+
+translateButton.addEventListener("click", morseOrEnglish);
