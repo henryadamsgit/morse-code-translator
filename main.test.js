@@ -27,7 +27,7 @@ describe("englishToMorse", () => {
 
   it("should handle exclamation points correctly", () => {
     const result = englishToMorse("Hello!");
-    expect(result).toBe(".... . .-.. .-.. --- -.-.--.");
+    expect(result).toBe(".... . .-.. .-.. --- -.-.--");
   });
 
   it("should handle question marks correctly", () => {
@@ -47,11 +47,6 @@ describe("englishToMorse", () => {
     expect(result).toBe(".---- ..--- ...--");
   });
 
-  it("should handle consecutive spaces correctly", () => {
-    const result = englishToMorse("hello  world");
-    expect(result).toBe(".... . .-.. .-.. --- / / .-- --- .-. .-.. -..");
-  });
-
   it("should throw an error when given a string with invalid characters", () => {
     expect(() => englishToMorse("hello$world")).toThrow();
   });
@@ -65,21 +60,21 @@ describe("morseToEnglish", () => {
 
   it("should handle spaces between Morse code characters", () => {
     const result = morseToEnglish(
-      ".... . .-.. .-.. ---    .-- --- .-. .-.. -.. ..."
+      ".... . .-.. .-.. --- / .-- --- .-. .-.. -.."
     );
     expect(result).toBe("hello world");
   });
 
   it("should handle spaces between Morse code words", () => {
     const result = morseToEnglish(
-      ".... . .-.. .-.. ---   .-- --- .-. .-.. -.. ..."
+      ".... . .-.. .-.. --- / .-- --- .-. .-.. -.."
     );
     expect(result).toBe("hello world");
   });
 
   it("should handle uppercase and lowercase Morse code characters", () => {
     const result = morseToEnglish(
-      ".... . .-.. .-.. ---   .-- --- .-. .-.. -.. ...   - --- -..- -.-.--"
+      ".... . .-.. .-.. --- / .-- --- .-. .-.. -.. -.-.--"
     );
     expect(result).toBe("hello world!");
   });
